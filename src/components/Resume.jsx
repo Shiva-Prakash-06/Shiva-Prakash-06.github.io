@@ -1,0 +1,123 @@
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { FaDownload, FaFilePdf, FaClock } from 'react-icons/fa';
+
+const Resume = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <section id="resume" ref={ref} className="py-20 bg-gradient-to-b from-slate-gray to-midnight-navy relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-warm-white mb-4">
+            My <span className="text-royal-gold">Resume</span>
+          </h2>
+          <div className="w-24 h-1 bg-royal-gold mx-auto mb-6"></div>
+          <p className="text-warm-white/80 text-lg max-w-2xl mx-auto">
+            Download my complete resume to learn more about my journey, skills, and achievements
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="bg-slate-gray rounded-2xl border-2 border-royal-gold/40 overflow-hidden shadow-2xl shadow-royal-gold/20">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-royal-gold to-royal-gold/80 p-6">
+              <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex items-center gap-4">
+                  <FaFilePdf className="text-4xl text-midnight-navy" />
+                  <div>
+                    <h3 className="text-2xl font-bold text-midnight-navy">Resume_ShivaPrakash.pdf</h3>
+                    <div className="flex items-center gap-2 mt-1">
+                      <FaClock className="text-midnight-navy/70" />
+                      <p className="text-midnight-navy/70 text-sm">Last updated: November 2025</p>
+                    </div>
+                  </div>
+                </div>
+                <motion.a
+                  href="/resume.pdf"
+                  download="Resume_ShivaPrakash.pdf"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-midnight-navy text-royal-gold px-6 py-3 rounded-lg font-semibold hover:bg-midnight-navy/90 transition-all duration-300 flex items-center gap-2 shadow-lg"
+                >
+                  <FaDownload /> Download PDF
+                </motion.a>
+              </div>
+            </div>
+
+            {/* PDF Viewer */}
+            <div className="bg-warm-white/5 p-8">
+              <div className="w-full h-[800px] bg-white rounded-lg overflow-hidden shadow-inner">
+                <iframe
+                  src="/resume.pdf"
+                  className="w-full h-full"
+                  title="Resume PDF"
+                />
+              </div>
+            </div>
+
+            {/* Footer Info */}
+            <div className="bg-slate-gray-light p-6 border-t border-royal-gold/20">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-6">
+                  <div>
+                    <p className="text-warm-white/60 text-sm">Version</p>
+                    <p className="text-royal-gold font-bold font-jetbrains">v1.0</p>
+                  </div>
+                  <div className="h-8 w-px bg-royal-gold/30"></div>
+                  <div>
+                    <p className="text-warm-white/60 text-sm">Format</p>
+                    <p className="text-royal-gold font-bold">PDF</p>
+                  </div>
+                  <div className="h-8 w-px bg-royal-gold/30"></div>
+                  <div>
+                    <p className="text-warm-white/60 text-sm">Size</p>
+                    <p className="text-royal-gold font-bold font-jetbrains">~200 KB</p>
+                  </div>
+                </div>
+                <motion.a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  className="text-royal-gold hover:text-royal-gold/80 transition-colors underline text-sm"
+                >
+                  View in new tab →
+                </motion.a>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-8 text-center"
+          >
+            <p className="text-warm-white/70 text-sm">
+              Need a different format? Contact me at{' '}
+              <a href="mailto:p.shivaraman@gmail.com" className="text-royal-gold hover:underline">
+                p.shivaraman@gmail.com
+              </a>
+            </p>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Resume;
