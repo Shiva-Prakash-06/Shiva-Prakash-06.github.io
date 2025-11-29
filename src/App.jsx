@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import AboutPage from './pages/AboutPage';
 import AcademicsPage from './pages/AcademicsPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ExperiencePage from './pages/ExperiencePage';
@@ -17,7 +16,6 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutPage />} />
         <Route path="/academics" element={<AcademicsPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/experience" element={<ExperiencePage />} />

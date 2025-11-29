@@ -1,14 +1,8 @@
 import { motion } from 'framer-motion';
-import { FaChevronDown, FaDownload } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaDownload } from 'react-icons/fa';
 
 const Hero = () => {
-  const scrollToNext = () => {
-    window.scrollBy({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
-  };
-
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-midnight-navy">
       {/* Animated Background */}
@@ -86,22 +80,24 @@ const Hero = () => {
               transition={{ delay: 0.8 }}
               className="flex flex-wrap gap-4 pt-4"
             >
-              <motion.a
-                href="/projects"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-royal-gold text-midnight-navy px-8 py-3 rounded-lg font-semibold hover:bg-royal-gold/90 transition-all duration-300 shadow-lg shadow-royal-gold/30"
-              >
-                Explore My Work
-              </motion.a>
-              <motion.a
-                href="/resume"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="border-2 border-royal-gold text-royal-gold px-8 py-3 rounded-lg font-semibold hover:bg-royal-gold hover:text-midnight-navy transition-all duration-300 flex items-center gap-2"
-              >
-                <FaDownload /> Download Resume
-              </motion.a>
+              <Link to="/projects">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-royal-gold text-midnight-navy px-8 py-3 rounded-lg font-semibold hover:bg-royal-gold/90 transition-all duration-300 shadow-lg shadow-royal-gold/30"
+                >
+                  Explore My Work
+                </motion.div>
+              </Link>
+              <Link to="/resume">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="border-2 border-royal-gold text-royal-gold px-8 py-3 rounded-lg font-semibold hover:bg-royal-gold hover:text-midnight-navy transition-all duration-300 flex items-center gap-2"
+                >
+                  <FaDownload /> Download Resume
+                </motion.div>
+              </Link>
             </motion.div>
           </motion.div>
 
@@ -156,22 +152,6 @@ const Hero = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.button
-        onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-royal-gold cursor-pointer"
-        animate={{
-          y: [0, 10, 0],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      >
-        <FaChevronDown className="text-3xl" />
-      </motion.button>
     </section>
   );
 };

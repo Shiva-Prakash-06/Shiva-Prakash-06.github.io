@@ -35,7 +35,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" ref={ref} className="py-20 bg-midnight-navy relative overflow-hidden">
+    <section id="about" ref={ref} className="py-20 bg-transparent relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-slate-gray/20 to-transparent"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -101,7 +101,7 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* Timeline */}
+        {/* Journey Timeline Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
