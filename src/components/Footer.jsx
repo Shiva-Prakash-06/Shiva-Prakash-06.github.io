@@ -25,8 +25,8 @@ const Footer = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-royal-gold via-transparent to-royal-gold"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-        <div className="grid md:grid-cols-3 gap-12 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-8">
           {/* Brand Section */}
           <div>
             <motion.div
@@ -35,12 +35,12 @@ const Footer = () => {
               viewport={{ once: true }}
               className="mb-4"
             >
-              <h3 className="text-3xl font-bold font-poppins">
+              <h3 className="text-2xl md:text-3xl font-bold font-poppins">
                 <span className="text-warm-white">Shiva</span>
                 <span className="text-royal-gold">.</span>
               </h3>
             </motion.div>
-            <p className="text-warm-white/70 mb-6">
+            <p className="text-warm-white/70 text-sm md:text-base mb-6">
               Building the future through analytics, technology, and business intelligence.
             </p>
             <div className="flex gap-4">
@@ -62,8 +62,8 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-bold text-warm-white mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-lg md:text-xl font-bold text-warm-white mb-4">Quick Links</h4>
+            <ul className="space-y-2 text-sm md:text-base">
               {quickLinks.map((link, index) => (
                 <motion.li
                   key={index}
@@ -85,8 +85,8 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-xl font-bold text-warm-white mb-4">Get In Touch</h4>
-            <ul className="space-y-3 text-warm-white/70">
+            <h4 className="text-lg md:text-xl font-bold text-warm-white mb-4">Get In Touch</h4>
+            <ul className="space-y-3 text-warm-white/70 text-sm md:text-base">
               <li className="flex items-start gap-2">
                 <FaEnvelope className="text-royal-gold mt-1 flex-shrink-0" />
                 <a href="mailto:p.shivaraman@gmail.com" className="hover:text-royal-gold transition-colors">
@@ -123,9 +123,6 @@ const Footer = () => {
           viewport={{ once: true }}
           className="mt-8 text-center"
         >
-          <p className="text-warm-white/50 text-xs">
-            Designed and developed with attention to detail and a passion for clean, modern UI
-          </p>
         </motion.div>
       </div>
     </footer>

@@ -31,17 +31,16 @@ const Resume = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="bg-slate-gray rounded-2xl border-2 border-royal-gold/40 overflow-hidden shadow-2xl shadow-royal-gold/20">
-            {/* Header */}
-            <div className="bg-gradient-to-r from-royal-gold to-royal-gold/80 p-6">
-              <div className="flex items-center justify-between flex-wrap gap-4">
-                <div className="flex items-center gap-4">
-                  <FaFilePdf className="text-4xl text-midnight-navy" />
+          <div className="bg-gradient-to-r from-royal-gold to-yellow-600 p-1 rounded-2xl shadow-2xl">
+            <div className="bg-slate-gray p-6 md:p-8 rounded-2xl">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between flex-wrap gap-4">
+                <div className="flex items-start sm:items-center gap-4">
+                  <FaFilePdf className="text-3xl md:text-4xl text-midnight-navy flex-shrink-0" />
                   <div>
-                    <h3 className="text-2xl font-bold text-midnight-navy">Resume_ShivaPrakash.pdf</h3>
+                    <h3 className="text-xl md:text-2xl font-bold text-midnight-navy break-words">Resume_ShivaPrakash.pdf</h3>
                     <div className="flex items-center gap-2 mt-1">
-                      <FaClock className="text-midnight-navy/70" />
-                      <p className="text-midnight-navy/70 text-sm">Last updated: November 2025</p>
+                      <FaClock className="text-midnight-navy/70 text-sm" />
+                      <p className="text-midnight-navy/70 text-xs sm:text-sm">Last updated: November 2025</p>
                     </div>
                   </div>
                 </div>
@@ -50,7 +49,7 @@ const Resume = () => {
                   download="Resume_ShivaPrakash.pdf"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-midnight-navy text-royal-gold px-6 py-3 rounded-lg font-semibold hover:bg-midnight-navy/90 transition-all duration-300 flex items-center gap-2 shadow-lg"
+                  className="bg-midnight-navy text-royal-gold px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold text-sm md:text-base hover:bg-midnight-navy/90 transition-all duration-300 shadow-lg flex items-center gap-2"
                 >
                   <FaDownload /> Download PDF
                 </motion.a>
@@ -58,8 +57,8 @@ const Resume = () => {
             </div>
 
             {/* PDF Viewer */}
-            <div className="bg-warm-white/5 p-8">
-              <div className="w-full h-[800px] bg-white rounded-lg overflow-hidden shadow-inner">
+            <div className="bg-slate-gray rounded-2xl border-2 border-royal-gold/30 p-4 md:p-8 shadow-xl h-[500px] md:h-[800px]">
+              <div className="w-full h-full bg-white rounded-lg overflow-hidden shadow-inner">
                 <iframe
                   src="/resume.pdf"
                   className="w-full h-full"
@@ -67,10 +66,16 @@ const Resume = () => {
                 />
               </div>
             </div>
+          </div>
 
-            {/* Footer Info */}
-            <div className="bg-slate-gray-light p-6 border-t border-royal-gold/20">
-              <div className="flex flex-wrap items-center justify-between gap-4">
+          {/* Additional Info */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-6 md:mt-8 text-center"
+          >
+            <p className="text-warm-white/70 text-xs sm:text-sm
                 <div className="flex items-center gap-6">
                   <div>
                     <p className="text-warm-white/60 text-sm">Version</p>

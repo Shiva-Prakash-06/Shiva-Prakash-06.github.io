@@ -51,7 +51,7 @@ const About = () => {
           <div className="w-24 h-1 bg-royal-gold mx-auto"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-20">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-20">
           {/* Left - Personal Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -78,7 +78,7 @@ const About = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid grid-cols-2 gap-6"
+            className="grid grid-cols-2 gap-4 md:gap-6"
           >
             {[
               { number: '2', label: 'Degree Programs', icon: '🎓' },
@@ -91,11 +91,11 @@ const About = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                className="bg-slate-gray p-6 rounded-2xl border border-royal-gold/20 hover:border-royal-gold/40 transition-all duration-300 text-center hover:scale-105 shadow-lg hover:shadow-royal-gold/20"
+                className="flex flex-col items-center justify-center bg-gradient-to-br from-royal-gold/10 to-transparent border border-royal-gold/30 rounded-xl p-4 md:p-6 hover:border-royal-gold/60 transition-all duration-300"
               >
-                <div className="text-4xl mb-2">{stat.icon}</div>
-                <div className="text-3xl font-bold text-royal-gold font-jetbrains mb-2">{stat.number}</div>
-                <div className="text-warm-white/80 text-sm">{stat.label}</div>
+                <span className="text-3xl sm:text-4xl md:text-5xl mb-2">{stat.icon}</span>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-royal-gold mb-1">{stat.number}</h3>
+                <p className="text-warm-white/70 text-xs sm:text-sm text-center">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>

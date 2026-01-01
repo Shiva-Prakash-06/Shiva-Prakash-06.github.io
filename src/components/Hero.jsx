@@ -33,24 +33,24 @@ const Hero = () => {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left Side - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-4 md:space-y-6 order-2 md:order-1"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="text-royal-gold text-lg md:text-xl font-medium mb-2">
+              <h2 className="text-royal-gold text-base md:text-xl font-medium mb-2">
                 Hello, I'm
               </h2>
-              <h1 className="text-5xl md:text-7xl font-bold text-warm-white mb-4">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-warm-white mb-4">
                 Shiva Prakash
               </h1>
               <div className="h-1 w-24 bg-royal-gold mb-6"></div>
@@ -60,7 +60,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-xl md:text-2xl text-royal-gold font-semibold"
+              className="text-lg sm:text-xl md:text-2xl text-royal-gold font-semibold"
             >
               Business Analyst in the making | Data Science + Applied Finance | Builder of apps & systems
             </motion.p>
@@ -69,7 +69,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="text-lg text-warm-white/80"
+              className="text-base sm:text-lg text-warm-white/80"
             >
               I combine analytics, finance, and full-stack fundamentals to build meaningful projects in business and education.
             </motion.p>
@@ -78,7 +78,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4"
             >
               <Link to="/projects">
                 <motion.div
@@ -103,13 +103,14 @@ const Hero = () => {
 
           {/* Right Side - Profile Image */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden md:flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative order-1 md:order-2"
           >
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
             <motion.div
-              className="relative w-96 h-96"
+              className="absolute inset-0"
               animate={{
                 rotate: [0, 360],
               }}
@@ -129,7 +130,7 @@ const Hero = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute w-80 h-80 rounded-full overflow-hidden border-8 border-royal-gold shadow-2xl shadow-royal-gold/50"
+              className="absolute inset-4 sm:inset-6 md:inset-8 lg:inset-10 rounded-full overflow-hidden border-4 sm:border-6 md:border-8 border-royal-gold shadow-2xl shadow-royal-gold/50"
             >
               <img 
                 src="/profile.jpg" 
@@ -139,7 +140,7 @@ const Hero = () => {
             </motion.div>
             
             <motion.div
-              className="absolute w-64 h-64 bg-gradient-to-br from-royal-gold/20 to-transparent rounded-full blur-2xl"
+              className="absolute inset-0 bg-gradient-to-br from-royal-gold/20 to-transparent rounded-full blur-2xl"
               animate={{
                 scale: [1, 1.2, 1],
               }}
@@ -149,6 +150,7 @@ const Hero = () => {
                 ease: "easeInOut"
               }}
             />
+            </div>
           </motion.div>
         </div>
       </div>

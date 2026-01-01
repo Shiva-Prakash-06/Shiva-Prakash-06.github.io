@@ -111,10 +111,10 @@ const Aspirations = () => {
               <div className="bg-slate-gray rounded-2xl border-2 border-royal-gold/30 hover:border-royal-gold/60 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-royal-gold/30 group">
                 {/* Header */}
                 <div className={`bg-gradient-to-r ${aspiration.color} p-1`}>
-                  <div className="bg-slate-gray p-8">
-                    <div className="flex items-center gap-6 mb-4">
+                  <div className="bg-slate-gray p-4 md:p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 md:gap-6 mb-4">
                       <motion.div
-                        className="text-5xl text-royal-gold"
+                        className="text-4xl md:text-5xl text-royal-gold"
                         whileHover={{ 
                           scale: 1.2,
                           rotate: 360,
@@ -124,16 +124,16 @@ const Aspirations = () => {
                         {aspiration.icon}
                       </motion.div>
                       <div>
-                        <h3 className="text-3xl font-bold text-warm-white mb-1">{aspiration.title}</h3>
-                        <p className="text-royal-gold font-semibold font-jetbrains">{aspiration.subtitle}</p>
+                        <h3 className="text-2xl md:text-3xl font-bold text-warm-white mb-1">{aspiration.title}</h3>
+                        <p className="text-royal-gold font-semibold font-jetbrains text-sm md:text-base">{aspiration.subtitle}</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Goals */}
-                <div className="p-8">
-                  <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-4 md:p-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {aspiration.goals.map((goal, goalIndex) => (
                       <motion.div
                         key={goalIndex}

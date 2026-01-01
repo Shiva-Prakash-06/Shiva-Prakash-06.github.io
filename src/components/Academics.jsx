@@ -48,7 +48,7 @@ const Academics = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Christ University Card */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -56,16 +56,16 @@ const Academics = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-slate-gray rounded-2xl border-2 border-royal-gold/30 hover:border-royal-gold/60 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-royal-gold/30 group"
           >
-            <div className="bg-gradient-to-r from-royal-gold to-royal-gold/80 p-6">
-              <FaUniversity className="text-4xl text-midnight-navy mb-3" />
-              <h3 className="text-2xl font-bold text-midnight-navy">Christ University</h3>
-              <p className="text-midnight-navy/80 font-semibold">B.Com Applied Finance & Analytics</p>
-              <p className="text-midnight-navy/70 text-sm mt-1">2024 - 2027</p>
+            <div className="bg-gradient-to-r from-royal-gold to-royal-gold/80 p-4 md:p-6">
+              <FaUniversity className="text-3xl md:text-4xl text-midnight-navy mb-3" />
+              <h3 className="text-xl md:text-2xl font-bold text-midnight-navy">Christ University</h3>
+              <p className="text-midnight-navy/80 font-semibold text-sm md:text-base">B.Com Applied Finance & Analytics</p>
+              <p className="text-midnight-navy/70 text-xs sm:text-sm mt-1">2024 - 2027</p>
             </div>
 
-            <div className="p-6 space-y-6">
+            <div className="p-4 md:p-6 space-y-6 md:space-y-8">
               <div>
-                <h4 className="text-xl font-semibold text-royal-gold mb-4">Key Coursework</h4>
+                <h4 className="text-lg md:text-xl font-semibold text-royal-gold mb-4">Key Coursework</h4>
                 <div className="space-y-4">
                   {christCourses.map((course, index) => (
                     <motion.div
@@ -75,8 +75,8 @@ const Academics = () => {
                       transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                     >
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-warm-white/90 text-sm">{course.name}</span>
-                        <span className="text-royal-gold text-sm font-jetbrains">{course.progress}%</span>
+                        <span className="text-warm-white/90 text-xs sm:text-sm">{course.name}</span>
+                        <span className="text-royal-gold text-xs sm:text-sm font-jetbrains">{course.progress}%</span>
                       </div>
                       <div className="h-2 bg-slate-gray-light rounded-full overflow-hidden">
                         <motion.div
@@ -114,31 +114,31 @@ const Academics = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="bg-slate-gray rounded-2xl border-2 border-royal-gold/30 hover:border-royal-gold/60 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-royal-gold/30 group"
           >
-            <div className="bg-gradient-to-r from-royal-gold/90 to-royal-gold p-6">
-              <FaBook className="text-4xl text-midnight-navy mb-3" />
-              <h3 className="text-2xl font-bold text-midnight-navy">IIT Madras</h3>
-              <p className="text-midnight-navy/80 font-semibold">B.Sc Data Science & Applications</p>
-              <p className="text-midnight-navy/70 text-sm mt-1">2024 - 2028</p>
+            <div className="bg-gradient-to-r from-royal-gold/90 to-royal-gold p-4 md:p-6">
+              <FaBook className="text-3xl md:text-4xl text-midnight-navy mb-3" />
+              <h3 className="text-xl md:text-2xl font-bold text-midnight-navy">IIT Madras</h3>
+              <p className="text-midnight-navy/80 font-semibold text-sm md:text-base">B.Sc Data Science & Applications</p>
+              <p className="text-midnight-navy/70 text-xs sm:text-sm mt-1">2024 - 2028</p>
             </div>
 
-            <div className="p-6 space-y-6">
+            <div className="p-4 md:p-6 space-y-6 md:space-y-8">
               {/* Completed Modules */}
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <h4 className="text-xl font-semibold text-royal-gold">Completed</h4>
+                  <h4 className="text-lg md:text-xl font-semibold text-royal-gold">Completed</h4>
                   <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-semibold">Foundational Level ✓</span>
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                   {iitmCompleted.map((module, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                      className="bg-slate-gray-light p-3 rounded-lg border border-royal-gold/20 hover:border-royal-gold/40 transition-all duration-300 flex items-center gap-2"
+                      className="bg-slate-gray-light p-3 md:p-4 rounded-lg border border-royal-gold/20 hover:border-royal-gold/40 transition-all duration-300 flex items-center gap-2 md:gap-3"
                     >
-                      <div className={`text-2xl ${module.color}`}>{module.icon}</div>
-                      <span className="text-warm-white/90 text-xs font-medium">{module.name}</span>
+                      <span className={`${module.color} text-lg md:text-xl`}>{module.icon}</span>
+                      <span className="text-warm-white/90 font-medium text-xs sm:text-sm">{module.name}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -147,7 +147,7 @@ const Academics = () => {
               {/* Current Modules */}
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <h4 className="text-xl font-semibold text-royal-gold">Currently Studying</h4>
+                  <h4 className="text-lg md:text-xl font-semibold text-royal-gold">Currently Studying</h4>
                   <span className="px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs font-semibold">Diploma in Programming</span>
                 </div>
                 <div className="space-y-3">

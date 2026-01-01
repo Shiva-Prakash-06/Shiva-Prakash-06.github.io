@@ -36,12 +36,12 @@ const ScrollToTop = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 bg-royal-gold text-midnight-navy p-4 rounded-full shadow-lg shadow-royal-gold/50 hover:bg-royal-gold/90 transition-all duration-300"
+          className="fixed bottom-6 md:bottom-8 right-6 md:right-8 z-40 bg-royal-gold text-midnight-navy p-3 md:p-4 rounded-full shadow-lg shadow-royal-gold/50 hover:shadow-royal-gold/70 transition-all duration-300 cursor-pointer"
           whileHover={{ scale: 1.1, y: -5 }}
           whileTap={{ scale: 0.9 }}
           aria-label="Scroll to top"
         >
-          <FaArrowUp className="text-xl" />
+          <FaArrowUp className="text-lg md:text-xl" />
         </motion.button>
       )}
     </AnimatePresence>

@@ -131,7 +131,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -142,7 +142,7 @@ const Projects = () => {
             >
               <div className="bg-slate-gray rounded-2xl border border-royal-gold/20 hover:border-royal-gold/60 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-royal-gold/30 h-full flex flex-col hover:-translate-y-2">
                 {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-40 sm:h-48 overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -152,26 +152,26 @@ const Projects = () => {
                 </div>
                 
                 {/* Project Header */}
-                <div className="p-6 border-b border-royal-gold/20">
-                  <div className="text-3xl text-royal-gold mb-3">{project.icon}</div>
-                  <h3 className="text-xl font-bold text-warm-white mb-2">{project.title}</h3>
-                  <p className="text-warm-white/70 text-sm">{project.shortDesc}</p>
+                <div className="p-4 md:p-6 border-b border-royal-gold/20">
+                  <div className="text-2xl md:text-3xl text-royal-gold mb-3">{project.icon}</div>
+                  <h3 className="text-lg md:text-xl font-bold text-warm-white mb-2">{project.title}</h3>
+                  <p className="text-warm-white/70 text-xs sm:text-sm">{project.shortDesc}</p>
                 </div>
 
                 {/* Project Body */}
-                <div className="p-6 flex-grow flex flex-col">
-                  <p className="text-warm-white/80 text-sm mb-4 flex-grow">
+                <div className="p-4 md:p-6 flex-grow flex flex-col">
+                  <p className="text-warm-white/80 text-xs sm:text-sm mb-4 flex-grow">
                     {project.description}
                   </p>
 
                   {/* Tech Stack */}
                   <div className="mb-4">
-                    <h4 className="text-royal-gold font-semibold text-sm mb-2">Tech Stack</h4>
+                    <h4 className="text-royal-gold font-semibold text-xs sm:text-sm mb-2">Tech Stack</h4>
                     <div className="flex flex-wrap gap-2">
                       {project.tech.map((tech, i) => (
                         <span
                           key={i}
-                          className="px-3 py-1 bg-royal-gold/10 text-royal-gold rounded-lg text-xs font-medium border border-royal-gold/30 flex items-center gap-1"
+                          className="px-2 py-1 bg-royal-gold/10 text-royal-gold rounded text-xs border border-royal-gold/30 flex items-center gap-1"
                         >
                           {techIcons[tech] && <span className="text-sm">{techIcons[tech]}</span>}
                           {tech}
@@ -182,7 +182,7 @@ const Projects = () => {
 
                   {/* Course Badge */}
                   <div className="mb-4">
-                    <span className="px-3 py-1 bg-midnight-navy text-warm-white/80 rounded-lg text-xs font-medium border border-royal-gold/30">
+                    <span className="px-2 py-1 bg-midnight-navy text-warm-white/80 rounded text-xs font-medium border border-royal-gold/30">
                       {project.course}
                     </span>
                   </div>
@@ -190,7 +190,7 @@ const Projects = () => {
                   {/* View Details Button */}
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="w-full bg-royal-gold/10 hover:bg-royal-gold hover:text-midnight-navy text-royal-gold py-2 px-4 rounded-lg font-semibold transition-all duration-300 border border-royal-gold/30 hover:border-royal-gold flex items-center justify-center gap-2"
+                    className="w-full bg-royal-gold/10 hover:bg-royal-gold hover:text-midnight-navy text-royal-gold py-2 md:py-3 px-4 rounded-lg font-semibold text-sm md:text-base transition-all duration-300 border border-royal-gold/30 hover:border-royal-gold flex items-center justify-center gap-2"
                   >
                     View Details <FaExternalLinkAlt className="text-sm" />
                   </button>
@@ -211,34 +211,34 @@ const Projects = () => {
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="bg-slate-gray rounded-2xl border-2 border-royal-gold/40 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+              className="bg-slate-gray rounded-2xl border-2 border-royal-gold/40 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl mx-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className={`bg-gradient-to-br ${selectedProject.color} p-8 border-b border-royal-gold/30`}>
+              <div className={`bg-gradient-to-br ${selectedProject.color} p-6 md:p-8 border-b border-royal-gold/30`}>
                 <div className="flex justify-between items-start">
-                  <div>
-                    <div className="text-5xl text-royal-gold mb-4">{selectedProject.icon}</div>
-                    <h3 className="text-3xl font-bold text-warm-white mb-2">{selectedProject.title}</h3>
-                    <p className="text-warm-white/80">{selectedProject.description}</p>
+                  <div className="flex-1 pr-4">
+                    <div className="text-4xl md:text-5xl text-royal-gold mb-4">{selectedProject.icon}</div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-warm-white mb-2">{selectedProject.title}</h3>
+                    <p className="text-warm-white/80 text-sm md:text-base">{selectedProject.description}</p>
                   </div>
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="text-warm-white/80 hover:text-royal-gold text-3xl transition-colors"
+                    className="text-warm-white/80 hover:text-royal-gold text-2xl md:text-3xl transition-colors flex-shrink-0"
                   >
                     ×
                   </button>
                 </div>
               </div>
 
-              <div className="p-8 space-y-6">
+              <div className="p-6 md:p-8 space-y-6">
                 {/* Tech Stack */}
                 <div>
-                  <h4 className="text-xl font-bold text-royal-gold mb-3">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-3">
+                  <h4 className="text-lg md:text-xl font-bold text-royal-gold mb-3">Technologies Used</h4>
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                     {selectedProject.tech.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-4 py-2 bg-royal-gold/10 text-royal-gold rounded-lg font-medium border border-royal-gold/30 flex items-center gap-2"
+                        className="px-3 py-1.5 bg-royal-gold/10 text-royal-gold rounded-lg text-xs sm:text-sm font-medium border border-royal-gold/30 flex items-center gap-2"
                       >
                         {techIcons[tech] && <span className="text-lg">{techIcons[tech]}</span>}
                         {tech}
@@ -249,7 +249,7 @@ const Projects = () => {
 
                 {/* Features */}
                 <div>
-                  <h4 className="text-xl font-bold text-royal-gold mb-3">Key Features</h4>
+                  <h4 className="text-lg md:text-xl font-bold text-royal-gold mb-3">Key Features</h4>
                   <ul className="space-y-2">
                     {selectedProject.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
