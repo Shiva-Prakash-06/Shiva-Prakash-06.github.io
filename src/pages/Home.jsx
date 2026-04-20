@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import KeyHighlights from '../components/KeyHighlights';
 import About from '../components/About';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
@@ -88,6 +89,8 @@ const Home = () => {
           <FaChevronDown className="text-3xl" />
         </motion.button>
       </div>
+
+      <KeyHighlights />
       
       {/* Quick Intro Cards Section with slate-gray background */}
       <section id="quick-intro" className="py-16 bg-slate-gray relative overflow-hidden">

@@ -3,100 +3,33 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FaFlask, FaDatabase, FaHtml5, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { SiBootstrap, SiRedis, SiVuedotjs, SiCelery } from 'react-icons/si';
+import { profileData } from '../data/profileData';
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const projects = [
-    {
-      id: 1,
-      title: 'Vehicle Parking App',
-      description: 'A comprehensive parking slot management system with real-time availability tracking and admin dashboard.',
-      shortDesc: 'Parking management with slot booking and analytics',
-      tech: ['Flask', 'SQLite', 'HTML/CSS', 'Bootstrap', 'Jinja2'],
-      features: [
-        'Real-time slot booking and unbooking',
-        'Admin dashboard with usage analytics',
-        'Interactive charts for parking trends',
-        'Automatic slot allocation algorithm',
-        'Complete booking history tracking',
-        'Polished responsive UI'
-      ],
-      course: 'Built for IITM MAD-1 Course',
-      color: 'from-blue-500/20 to-purple-500/20',
-      icon: <FaDatabase />,
-      image: '/project-1.png'
-    },
-    {
-      id: 2,
-      title: 'Docathon Sports Event App',
-      description: 'Event management system for college sports fest with complex tournament logic and scoring.',
-      shortDesc: 'Sports fest management with tournament logic',
-      tech: ['Flask', 'SQLite', 'Bootstrap', 'Jinja2'],
-      features: [
-        'Knockout tournament system',
-        'Tri-series scenario handling',
-        'Point-based advancement logic',
-        'Participation tracking system',
-        'Admin CRUD operations',
-        'Class and sports management',
-        'Passcode-based secure access',
-        'Black & gold branded UI'
-      ],
-      course: 'Built for College Sports Fest',
-      color: 'from-yellow-500/20 to-orange-500/20',
-      icon: <FaFlask />,
-      image: '/project-2.png'
-    },
-    {
-      id: 3,
-      title: 'Hospital Management System V2',
-      description: 'Advanced healthcare management platform with role-based access and asynchronous job processing.',
-      shortDesc: 'Healthcare platform with async jobs & caching',
-      tech: ['Flask (API)', 'VueJS', 'SQLite', 'Redis', 'Celery'],
-      features: [
-        'Three role system: Admin, Doctor, Patient',
-        'Appointment scheduling & management',
-        'Treatment records and history',
-        'Scheduled reminder system (Celery jobs)',
-        'Activity reports with analytics',
-        'Async CSV export functionality',
-        'Redis-based caching layer',
-        'Role-based authentication & authorization',
-        'Programmatic database creation'
-      ],
-      course: 'Built for Application Development Practice',
-      color: 'from-green-500/20 to-teal-500/20',
-      icon: <SiVuedotjs />,
-      image: '/project-3.png'
-    },
-    {
-      id: 4,
-      title: 'Blossoms Fest 2025',
-      description: 'Comprehensive festival management system combining public website with full-featured participation tracking for college fest with 2,512 students, 31 events, and real-time analytics.',
-      shortDesc: 'Festival management with participation tracking',
-      tech: ['Astro v5 SSR', 'Turso (libsql)', 'Tailwind CSS', 'Chart.js'],
-      features: [
-        'Integrated website & participation tracker',
-        '2,512 pre-loaded students with authentication',
-        '31 events across 4 categories (15 team events)',
-        'Student portal: Event registration (solo & team)',
-        'Admin dashboard: 4 real-time analytics charts',
-        'Attendance tracking with search/filter',
-        'Winners management with Greek mythology theme',
-        'Notifications system with slide-in popups',
-        'CSV exports (4 types) and defaulters tracking',
-        'Team formation & management (6-10 members)',
-        'Cloud database (Turso) deployed on Vercel'
-      ],
-      course: 'Department of Commerce Fest',
-      color: 'from-amber-500/20 to-yellow-500/20',
-      icon: <FaDatabase />,
-      image: '/project-4.png'
-    }
+  const projectColors = [
+    'from-blue-500/20 to-purple-500/20',
+    'from-yellow-500/20 to-orange-500/20',
+    'from-green-500/20 to-teal-500/20',
+    'from-amber-500/20 to-yellow-500/20',
+    'from-cyan-500/20 to-blue-500/20',
   ];
+
+  const projects = profileData.projects.map((project, index) => ({
+    id: index + 1,
+    title: project.title,
+    description: project.description,
+    shortDesc: project.points[0],
+    tech: project.tech,
+    features: project.points,
+    course: project.context,
+    color: projectColors[index % projectColors.length],
+    icon: project.tech.includes('Flask') ? <FaFlask /> : project.tech.includes('VueJS') ? <SiVuedotjs /> : <FaDatabase />,
+    image: project.image,
+  }));
 
   const techIcons = {
     'Flask': <FaFlask />,
@@ -127,7 +60,7 @@ const Projects = () => {
           </h2>
           <div className="w-24 h-1 bg-royal-gold mx-auto mb-6"></div>
           <p className="text-warm-white/80 text-lg max-w-2xl mx-auto">
-            Full-stack applications built with modern technologies, focusing on real-world problem solving
+            Structured project systems built for operations, analytics, and real-world execution
           </p>
         </motion.div>
 
@@ -199,6 +132,31 @@ const Projects = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-14"
+        >
+          <h3 className="text-2xl md:text-3xl font-bold text-warm-white text-center mb-8">
+            Analytics & <span className="text-royal-gold">Research Work</span>
+          </h3>
+          <div className="grid md:grid-cols-3 gap-5">
+            {profileData.analytics.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
+                className="bg-slate-gray rounded-xl border border-royal-gold/20 hover:border-royal-gold/50 transition-all duration-300 p-5"
+              >
+                <h4 className="text-lg font-bold text-royal-gold mb-2">{item.title}</h4>
+                <p className="text-warm-white/80 text-sm leading-relaxed">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Project Detail Modal */}
         {selectedProject && (

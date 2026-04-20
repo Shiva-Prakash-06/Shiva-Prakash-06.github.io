@@ -3,32 +3,30 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaUniversity, FaBook, FaChartBar, FaPython, FaDatabase, FaFlask } from 'react-icons/fa';
 import { SiJupyter } from 'react-icons/si';
+import { profileData } from '../data/profileData';
 
 const Academics = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const christCourses = [
-    { name: 'Accounting', progress: 70 },
-    { name: 'Applied Finance', progress: 65 },
-    { name: 'Analytics', progress: 80 },
-    { name: 'Business Mathematics', progress: 75 },
-    { name: 'Economics', progress: 70 }
-  ];
+  const christEducation = profileData.education.find((item) => item.institution.includes('Christ'));
+  const iitmEducation = profileData.education.find((item) => item.institution.includes('IIT'));
 
-  const iitmCompleted = [
-    { name: 'Python Programming', icon: <FaPython />, color: 'text-blue-400' },
-    { name: 'Mathematics for Data Science', icon: <FaChartBar />, color: 'text-green-400' },
-    { name: 'Computational Thinking', icon: <SiJupyter />, color: 'text-orange-400' },
-    { name: 'Statistics', icon: <FaChartBar />, color: 'text-purple-400' }
-  ];
+  const christCourses = christEducation.coursework.map((name, index) => ({
+    name,
+    progress: 65 + index * 5,
+  }));
 
-  const iitmCurrent = [
-    { name: 'Database Management Systems', icon: <FaDatabase />, progress: 60 },
-    { name: 'Modern Application Development I (Flask)', icon: <FaFlask />, progress: 75 },
-    { name: 'Data Structures', icon: <FaPython />, progress: 50 },
-    { name: 'Business Data Management', icon: <FaBook />, progress: 55 }
-  ];
+  const iitmCompleted = iitmEducation.coursework.slice(0, 4).map((name, index) => {
+    const icons = [<FaPython />, <FaChartBar />, <SiJupyter />, <FaChartBar />];
+    const colors = ['text-blue-400', 'text-green-400', 'text-orange-400', 'text-purple-400'];
+    return { name, icon: icons[index] || <FaChartBar />, color: colors[index] || 'text-royal-gold' };
+  });
+
+  const iitmCurrent = iitmEducation.coursework.slice(2).map((name, index) => {
+    const icons = [<FaDatabase />, <FaFlask />, <FaPython />, <FaBook />];
+    return { name, icon: icons[index] || <FaBook />, progress: 55 + index * 7 };
+  });
 
   return (
     <section id="academics" ref={ref} className="py-20 bg-gradient-to-b from-midnight-navy to-slate-gray relative overflow-hidden">
@@ -58,9 +56,9 @@ const Academics = () => {
           >
             <div className="bg-gradient-to-r from-royal-gold to-royal-gold/80 p-4 md:p-6">
               <FaUniversity className="text-3xl md:text-4xl text-midnight-navy mb-3" />
-              <h3 className="text-xl md:text-2xl font-bold text-midnight-navy">Christ University</h3>
-              <p className="text-midnight-navy/80 font-semibold text-sm md:text-base">B.Com Applied Finance & Analytics</p>
-              <p className="text-midnight-navy/70 text-xs sm:text-sm mt-1">2024 - 2027</p>
+              <h3 className="text-xl md:text-2xl font-bold text-midnight-navy">{christEducation.institution}</h3>
+              <p className="text-midnight-navy/80 font-semibold text-sm md:text-base">{christEducation.degree}</p>
+              <p className="text-midnight-navy/70 text-xs sm:text-sm mt-1">{christEducation.period}</p>
             </div>
 
             <div className="p-4 md:p-6 space-y-6 md:space-y-8">
@@ -94,7 +92,7 @@ const Academics = () => {
               <div className="pt-4 border-t border-royal-gold/20">
                 <h4 className="text-lg font-semibold text-warm-white mb-2">Focus Areas</h4>
                 <div className="flex flex-wrap gap-2">
-                  {['Analytics', 'Business Decision-Making', 'Financial Modeling', 'Data Interpretation'].map((tag, index) => (
+                  {profileData.skills.businessAndStrategy.map((tag, index) => (
                     <span
                       key={index}
                       className="px-3 py-1 bg-royal-gold/20 text-royal-gold rounded-full text-xs font-medium border border-royal-gold/30"
@@ -116,9 +114,9 @@ const Academics = () => {
           >
             <div className="bg-gradient-to-r from-royal-gold/90 to-royal-gold p-4 md:p-6">
               <FaBook className="text-3xl md:text-4xl text-midnight-navy mb-3" />
-              <h3 className="text-xl md:text-2xl font-bold text-midnight-navy">IIT Madras</h3>
-              <p className="text-midnight-navy/80 font-semibold text-sm md:text-base">B.Sc Data Science & Applications</p>
-              <p className="text-midnight-navy/70 text-xs sm:text-sm mt-1">2024 - 2028</p>
+              <h3 className="text-xl md:text-2xl font-bold text-midnight-navy">{iitmEducation.institution}</h3>
+              <p className="text-midnight-navy/80 font-semibold text-sm md:text-base">{iitmEducation.degree}</p>
+              <p className="text-midnight-navy/70 text-xs sm:text-sm mt-1">{iitmEducation.period}</p>
             </div>
 
             <div className="p-4 md:p-6 space-y-6 md:space-y-8">
@@ -126,7 +124,7 @@ const Academics = () => {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <h4 className="text-lg md:text-xl font-semibold text-royal-gold">Completed</h4>
-                  <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-semibold">Foundational Level ✓</span>
+                  <span className="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-semibold">CGPA {iitmEducation.cgpa}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                   {iitmCompleted.map((module, index) => (
@@ -148,7 +146,7 @@ const Academics = () => {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <h4 className="text-lg md:text-xl font-semibold text-royal-gold">Currently Studying</h4>
-                  <span className="px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs font-semibold">Diploma in Programming</span>
+                  <span className="px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs font-semibold">Data Science & Applications</span>
                 </div>
                 <div className="space-y-3">
                   {iitmCurrent.map((module, index) => (
@@ -191,7 +189,7 @@ const Academics = () => {
             Dual Degree <span className="text-royal-gold">Advantage</span>
           </h4>
           <p className="text-warm-white/80 max-w-3xl mx-auto">
-            Combining business finance fundamentals with cutting-edge data science to build a unique skill set 
+            Combining business finance fundamentals with data science training to build a balanced profile
             that bridges analytical rigor with practical business applications.
           </p>
         </motion.div>

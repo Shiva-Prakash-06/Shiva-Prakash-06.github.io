@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaHeart, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { profileData } from '../data/profileData';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -13,9 +14,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <FaGithub />, href: 'https://github.com/Shiva-Prakash-06', label: 'GitHub' },
-    { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/shiva-prakash-9b8b10315', label: 'LinkedIn' },
-    { icon: <FaEnvelope />, href: 'mailto:p.shivaraman@gmail.com', label: 'Email' }
+    { icon: <FaGithub />, href: profileData.basic.github, label: 'GitHub' },
+    { icon: <FaLinkedin />, href: profileData.basic.linkedin, label: 'LinkedIn' },
+    { icon: <FaEnvelope />, href: `mailto:${profileData.basic.email}`, label: 'Email' }
   ];
 
   return (
@@ -36,7 +37,7 @@ const Footer = () => {
               className="mb-4"
             >
               <h3 className="text-2xl md:text-3xl font-bold font-poppins">
-                <span className="text-warm-white">Shiva</span>
+                <span className="text-warm-white">{profileData.basic.name.split(' ')[0]}</span>
                 <span className="text-royal-gold">.</span>
               </h3>
             </motion.div>
@@ -89,13 +90,13 @@ const Footer = () => {
             <ul className="space-y-3 text-warm-white/70 text-sm md:text-base">
               <li className="flex items-start gap-2">
                 <FaEnvelope className="text-royal-gold mt-1 flex-shrink-0" />
-                <a href="mailto:p.shivaraman@gmail.com" className="hover:text-royal-gold transition-colors">
-                  p.shivaraman@gmail.com
+                <a href={`mailto:${profileData.basic.email}`} className="hover:text-royal-gold transition-colors">
+                  {profileData.basic.email}
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-royal-gold mt-1 flex-shrink-0">📍</span>
-                <span>Bangalore, Karnataka, India</span>
+                <span>{profileData.basic.location}</span>
               </li>
             </ul>
           </div>
@@ -112,7 +113,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-warm-white/70 text-sm text-center md:text-left"
           >
-            © {currentYear} Shiva Prakash — Built with <FaHeart className="inline text-royal-gold mx-1" /> using React + Tailwind CSS
+            © {currentYear} {profileData.basic.name} - Built with <FaHeart className="inline text-royal-gold mx-1" /> using React + Tailwind CSS
           </motion.p>
         </div>
 

@@ -2,36 +2,50 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaGraduationCap, FaChartLine, FaCode, FaTrophy } from 'react-icons/fa';
+import { profileData } from '../data/profileData';
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const [christEducation, iitmEducation] = profileData.education;
+
   const timeline = [
     {
       year: '2024',
       title: 'Started Dual Degree Journey',
-      description: 'Began B.Com Applied Finance & Analytics at Christ University and B.Sc Data Science at IIT Madras',
+      description: `Began ${christEducation.degree} at ${christEducation.institution} and ${iitmEducation.degree} at ${iitmEducation.institution}`,
       icon: <FaGraduationCap />
     },
     {
       year: '2024-25',
-      title: 'Foundational Excellence',
-      description: 'Completed foundational level at IIT Madras with strong focus on Python, Statistics, and Computational Thinking',
+      title: 'Academic Progress',
+      description: `Maintained strong academic performance with CGPA ${christEducation.cgpa} and ${iitmEducation.cgpa}`,
       icon: <FaChartLine />
     },
     {
       year: '2025',
       title: 'Building & Creating',
-      description: 'Developed multiple full-stack applications including event management systems and hospital management platforms',
+      description: `Built ${profileData.projects.length}+ end-to-end applications across analytics and operations`,
       icon: <FaCode />
     },
     {
       year: 'Present',
-      title: 'Advancing Forward',
-      description: 'Currently pursuing Diploma in Programming while building analytical and technical skills',
+      title: 'Leadership & Impact',
+      description: 'Leading analytics initiatives and handling live operational systems at real-world scale',
       icon: <FaTrophy />
     }
+  ];
+
+  const stats = [
+    { number: `${profileData.education.length}`, label: 'Degree Programs', icon: '🎓' },
+    { number: `${profileData.projects.length}+`, label: 'Major Projects', icon: '🚀' },
+    {
+      number: `${Object.values(profileData.skills).reduce((count, group) => count + group.length, 0)}+`,
+      label: 'Skill Areas',
+      icon: '💻'
+    },
+    { number: `${profileData.achievements.length}+`, label: 'Recognitions', icon: '⚡' }
   ];
 
   return (
@@ -61,15 +75,14 @@ const About = () => {
           >
             <div className="bg-slate-gray p-8 rounded-2xl border border-royal-gold/20 hover:border-royal-gold/40 transition-all duration-300 shadow-lg hover:shadow-royal-gold/20">
               <h3 className="text-2xl font-bold text-royal-gold mb-4">Who I Am</h3>
-              <p className="text-warm-white/90 leading-relaxed mb-4">
-                I'm a student pursuing <span className="text-royal-gold font-semibold">B.Com Applied Finance & Analytics (2024–27)</span> at Christ University, Bangalore, alongside the <span className="text-royal-gold font-semibold">B.Sc in Data Science (2024–28)</span> from IIT Madras Online BS Program.
-              </p>
-              <p className="text-warm-white/90 leading-relaxed mb-4">
-                My interests span <span className="text-royal-gold">analytics, business systems, app development, event-tech, leadership, and sports</span>. I'm passionate about building practical solutions that merge technology with business intelligence.
-              </p>
-              <p className="text-warm-white/90 leading-relaxed">
-                As a <span className="text-royal-gold">structured thinker and problem solver</span>, I enjoy creating clean systems and tools for events, teams, and operations. I believe in learning by building and continuously improving my craft.
-              </p>
+              {profileData.about.map((paragraph, index) => (
+                <p
+                  key={index}
+                  className={`text-warm-white/90 leading-relaxed ${index < profileData.about.length - 1 ? 'mb-4' : ''}`}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </motion.div>
 
@@ -80,12 +93,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="grid grid-cols-2 gap-4 md:gap-6"
           >
-            {[
-              { number: '2', label: 'Degree Programs', icon: '🎓' },
-              { number: '3+', label: 'Major Projects', icon: '🚀' },
-              { number: '10+', label: 'Technical Skills', icon: '💻' },
-              { number: '100%', label: 'Dedication', icon: '⚡' }
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -160,6 +168,30 @@ const About = () => {
                   <h4 className="text-lg font-bold text-warm-white mb-2">{item.title}</h4>
                   <p className="text-warm-white/80 text-sm">{item.description}</p>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 1.1 }}
+          className="mt-16"
+        >
+          <h3 className="text-3xl font-bold text-warm-white text-center mb-10">
+            What Sets Me <span className="text-royal-gold">Apart</span>
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+            {profileData.differentiator.map((point, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 1.2 + index * 0.1 }}
+                className="bg-slate-gray p-5 rounded-xl border border-royal-gold/20 hover:border-royal-gold/40 transition-all duration-300"
+              >
+                <p className="text-warm-white/85 text-sm md:text-base leading-relaxed">{point}</p>
               </motion.div>
             ))}
           </div>

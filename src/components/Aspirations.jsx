@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaRocket, FaMountain, FaStar } from 'react-icons/fa';
+import { profileData } from '../data/profileData';
 
 const Aspirations = () => {
   const ref = useRef(null);
@@ -10,47 +11,23 @@ const Aspirations = () => {
   const aspirations = [
     {
       title: 'Short Term',
-      subtitle: '2025 - 2027',
+      subtitle: profileData.aspirations.shortTerm.period,
       icon: <FaRocket />,
-      goals: [
-        'Land Business Analyst roles in reputed organizations',
-        'Build a stronger, more diverse project portfolio',
-        'Develop more full-stack applications with modern tech stacks',
-        'Deepen expertise in data analytics and visualization',
-        'Master advanced SQL and database optimization',
-        'Complete B.Com and progress through IIT Madras BS program',
-        'Contribute to open-source projects'
-      ],
+      goals: profileData.aspirations.shortTerm.goals,
       color: 'from-blue-500 to-cyan-500'
     },
     {
       title: 'Medium Term',
-      subtitle: '2027 - 2030',
+      subtitle: profileData.aspirations.mediumTerm.period,
       icon: <FaMountain />,
-      goals: [
-        'Pursue MBA from a top-tier business school',
-        'Take on leadership roles in business analytics teams',
-        'Specialize in a domain (FinTech, HealthTech, or EdTech)',
-        'Build expertise in business intelligence tools',
-        'Lead cross-functional teams on major initiatives',
-        'Mentor aspiring analysts and developers',
-        'Establish thought leadership through writing and speaking'
-      ],
+      goals: profileData.aspirations.mediumTerm.goals,
       color: 'from-purple-500 to-pink-500'
     },
     {
       title: 'Long Term',
-      subtitle: '2030 and Beyond',
+      subtitle: profileData.aspirations.longTerm.period,
       icon: <FaStar />,
-      goals: [
-        'Build systems that merge business, analytics, and technology',
-        'Lead strategic initiatives at organizational level',
-        'Create impact through innovative business solutions',
-        'Establish a consulting practice or venture',
-        'Bridge the gap between technical and business teams',
-        'Drive digital transformation in traditional industries',
-        'Inspire and mentor the next generation of tech leaders'
-      ],
+      goals: profileData.aspirations.longTerm.goals,
       color: 'from-yellow-500 to-orange-500'
     }
   ];
@@ -96,7 +73,7 @@ const Aspirations = () => {
           </h2>
           <div className="w-24 h-1 bg-royal-gold mx-auto mb-6"></div>
           <p className="text-warm-white/80 text-lg max-w-2xl mx-auto">
-            A roadmap of my professional journey, with clear milestones and ambitious goals
+            A roadmap of my professional journey, with clear milestones and focused goals
           </p>
         </motion.div>
 

@@ -2,61 +2,40 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaBasketballBall, FaChartLine, FaCode, FaCalendarAlt, FaUsers, FaBook, FaPalette, FaTrophy } from 'react-icons/fa';
+import { profileData } from '../data/profileData';
 
 const Interests = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const interests = [
-    {
-      name: 'Basketball',
-      icon: <FaBasketballBall />,
-      description: 'Playing and watching basketball',
-      color: 'from-orange-500 to-red-500'
-    },
-    {
-      name: 'Business & Analytics',
-      icon: <FaChartLine />,
-      description: 'Data-driven decision making',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      name: 'App Development',
-      icon: <FaCode />,
-      description: 'Building full-stack applications',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
-      name: 'Event Management',
-      icon: <FaCalendarAlt />,
-      description: 'Organizing and coordinating events',
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      name: 'Leadership',
-      icon: <FaUsers />,
-      description: 'Leading teams and initiatives',
-      color: 'from-yellow-500 to-orange-500'
-    },
-    {
-      name: 'Reading',
-      icon: <FaBook />,
-      description: 'Learning through books and articles',
-      color: 'from-indigo-500 to-purple-500'
-    },
-    {
-      name: 'UI/UX Design',
-      icon: <FaPalette />,
-      description: 'Creating beautiful interfaces',
-      color: 'from-pink-500 to-rose-500'
-    },
-    {
-      name: 'Tech for Sports',
-      icon: <FaTrophy />,
-      description: 'Building tech solutions for events',
-      color: 'from-teal-500 to-green-500'
-    }
+  const iconByInterest = {
+    'Basketball': <FaBasketballBall />,
+    'Business & Analytics': <FaChartLine />,
+    'App Development': <FaCode />,
+    'Event Management': <FaCalendarAlt />,
+    'Leadership': <FaUsers />,
+    'Reading': <FaBook />,
+    'UI/UX': <FaPalette />,
+    'Tech for events': <FaTrophy />,
+  };
+
+  const interestStyles = [
+    'from-orange-500 to-red-500',
+    'from-blue-500 to-cyan-500',
+    'from-green-500 to-emerald-500',
+    'from-purple-500 to-pink-500',
+    'from-yellow-500 to-orange-500',
+    'from-indigo-500 to-purple-500',
+    'from-pink-500 to-rose-500',
+    'from-teal-500 to-green-500',
   ];
+
+  const interests = profileData.interests.map((name, index) => ({
+    name,
+    icon: iconByInterest[name] || <FaCode />,
+    description: name,
+    color: interestStyles[index % interestStyles.length],
+  }));
 
   return (
     <section id="interests" ref={ref} className="py-20 bg-midnight-navy relative overflow-hidden">
@@ -77,7 +56,7 @@ const Interests = () => {
           </h2>
           <div className="w-24 h-1 bg-royal-gold mx-auto mb-6"></div>
           <p className="text-warm-white/80 text-lg max-w-2xl mx-auto">
-            Beyond coding and academics, here's what drives my passion and creativity
+            Beyond academics and systems work, these interests fuel my creativity and perspective
           </p>
         </motion.div>
 

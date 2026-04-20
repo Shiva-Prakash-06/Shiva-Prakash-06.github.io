@@ -6,53 +6,53 @@ import {
   FaChartBar, FaBrain, FaUsers, FaLightbulb, FaComments 
 } from 'react-icons/fa';
 import { SiFlask, SiBootstrap, SiPostgresql, SiRedis } from 'react-icons/si';
+import { profileData } from '../data/profileData';
 
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const withLevels = (skills, start = 70) => skills.map((name, index) => ({
+    name,
+    level: Math.min(95, start + index * 4),
+  }));
+
+  const skillIconFor = (name) => {
+    const key = name.toLowerCase();
+    if (key.includes('python')) return <FaPython />;
+    if (key.includes('flask')) return <SiFlask />;
+    if (key.includes('sqlite') || key.includes('sql')) return <FaDatabase />;
+    if (key.includes('html') || key.includes('css')) return <FaHtml5 />;
+    if (key.includes('bootstrap')) return <SiBootstrap />;
+    if (key.includes('power bi') || key.includes('tableau') || key.includes('excel')) return <FaChartBar />;
+    if (key.includes('leadership') || key.includes('team')) return <FaUsers />;
+    if (key.includes('problem') || key.includes('decision')) return <FaLightbulb />;
+    if (key.includes('communication') || key.includes('stakeholder')) return <FaComments />;
+    if (key.includes('analysis') || key.includes('business') || key.includes('financial')) return <FaBrain />;
+    return <FaChartBar />;
+  };
 
   const skillCategories = [
     {
       title: 'Technical Skills',
       icon: <FaPython />,
       color: 'from-blue-500 to-cyan-500',
-      skills: [
-        { name: 'Python', icon: <FaPython />, level: 85 },
-        { name: 'Flask', icon: <SiFlask />, level: 80 },
-        { name: 'SQLite', icon: <FaDatabase />, level: 80 },
-        { name: 'SQL', icon: <SiPostgresql />, level: 75 },
-        { name: 'HTML/CSS', icon: <FaHtml5 />, level: 80 },
-        { name: 'Bootstrap', icon: <SiBootstrap />, level: 75 },
-        { name: 'Jinja2', icon: <FaHtml5 />, level: 75 },
-        { name: 'REST APIs', icon: <FaDatabase />, level: 80 },
-        { name: 'Git Basics', icon: <FaGitAlt />, level: 70 },
-        { name: 'Data Analysis', icon: <FaChartBar />, level: 75 }
-      ]
+      skills: withLevels([...profileData.skills.analyticsAndTools, ...profileData.skills.development], 72)
+        .map((item) => ({ ...item, icon: skillIconFor(item.name) }))
     },
     {
       title: 'Business & Analytics',
       icon: <FaChartBar />,
       color: 'from-purple-500 to-pink-500',
-      skills: [
-        { name: 'Financial Modeling', icon: <FaChartBar />, level: 70 },
-        { name: 'Business Analysis', icon: <FaBrain />, level: 75 },
-        { name: 'Requirements Gathering', icon: <FaComments />, level: 80 },
-        { name: 'Data Interpretation', icon: <FaChartBar />, level: 80 },
-        { name: 'Statistics', icon: <FaChartBar />, level: 75 },
-        { name: 'Systems Thinking', icon: <FaBrain />, level: 85 }
-      ]
+      skills: withLevels(profileData.skills.businessAndStrategy, 74)
+        .map((item) => ({ ...item, icon: skillIconFor(item.name) }))
     },
     {
       title: 'Soft Skills',
       icon: <FaUsers />,
       color: 'from-yellow-500 to-orange-500',
-      skills: [
-        { name: 'Leadership', icon: <FaUsers />, level: 85 },
-        { name: 'Communication', icon: <FaComments />, level: 80 },
-        { name: 'Problem Solving', icon: <FaLightbulb />, level: 90 },
-        { name: 'Decision Making', icon: <FaBrain />, level: 80 },
-        { name: 'Teamwork', icon: <FaUsers />, level: 85 }
-      ]
+      skills: withLevels(profileData.skills.softSkills, 80)
+        .map((item) => ({ ...item, icon: skillIconFor(item.name) }))
     }
   ];
 
@@ -74,7 +74,7 @@ const Skills = () => {
           </h2>
           <div className="w-24 h-1 bg-royal-gold mx-auto mb-6"></div>
           <p className="text-warm-white/80 text-lg max-w-2xl mx-auto">
-            A comprehensive skill set spanning technical development, business analytics, and leadership
+            A comprehensive skill set spanning analytics, development, strategy, and leadership
           </p>
         </motion.div>
 
@@ -163,14 +163,10 @@ const Skills = () => {
           className="mt-12 bg-slate-gray rounded-2xl border border-royal-gold/30 p-8"
         >
           <h3 className="text-2xl font-bold text-warm-white mb-6 text-center">
-            Additional <span className="text-royal-gold">Competencies</span>
+            Certifications & <span className="text-royal-gold">Applied Work</span>
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
-            {[
-              'VueJS Basics', 'Redis Caching', 'Celery (Async Jobs)', 'REST API Design',
-              'Database Design', 'Event-Driven Architecture', 'Agile Workflows',
-              'Technical Documentation', 'Code Review', 'Debugging'
-            ].map((skill, index) => (
+            {profileData.certifications.flatMap((certification) => [certification.title, ...certification.points]).map((skill, index) => (
               <motion.span
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}

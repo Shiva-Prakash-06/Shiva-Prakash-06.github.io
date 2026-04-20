@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { FaEnvelope, FaLinkedin, FaGithub, FaPaperPlane } from 'react-icons/fa';
+import { profileData } from '../data/profileData';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -39,22 +40,22 @@ const Contact = () => {
     {
       icon: <FaEnvelope />,
       title: 'Email',
-      value: 'p.shivaraman@gmail.com',
-      link: 'mailto:p.shivaraman@gmail.com',
+      value: profileData.basic.email,
+      link: `mailto:${profileData.basic.email}`,
       color: 'from-red-500 to-pink-500'
     },
     {
       icon: <FaLinkedin />,
       title: 'LinkedIn',
       value: 'Connect on LinkedIn',
-      link: 'https://www.linkedin.com/in/shiva-prakash-9b8b10315',
+      link: profileData.basic.linkedin,
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: <FaGithub />,
       title: 'GitHub',
       value: 'View my repositories',
-      link: 'https://github.com/Shiva-Prakash-06',
+      link: profileData.basic.github,
       color: 'from-gray-500 to-slate-600'
     }
   ];
@@ -129,7 +130,7 @@ const Contact = () => {
               className="mt-12 bg-gradient-to-r from-royal-gold/10 to-transparent border border-royal-gold/30 rounded-xl p-6"
             >
               <h4 className="text-xl font-bold text-warm-white mb-3">Location</h4>
-              <p className="text-warm-white/80">Bangalore, Karnataka, India</p>
+              <p className="text-warm-white/80">{profileData.basic.location}</p>
               <p className="text-warm-white/60 text-sm mt-2">Available for remote opportunities</p>
             </motion.div>
           </motion.div>

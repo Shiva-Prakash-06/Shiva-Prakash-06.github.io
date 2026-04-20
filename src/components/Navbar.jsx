@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { profileData } from '../data/profileData';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -47,7 +48,7 @@ const Navbar = () => {
               className="text-2xl md:text-3xl font-bold font-poppins"
               whileHover={{ scale: 1.05 }}
             >
-              <span className="text-warm-white">Shiva</span>
+              <span className="text-warm-white">{profileData.basic.name.split(' ')[0]}</span>
               <span className="text-royal-gold">.</span>
             </motion.div>
           </Link>

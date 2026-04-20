@@ -2,77 +2,23 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaCode, FaTrophy, FaUsers, FaChalkboardTeacher } from 'react-icons/fa';
+import { profileData } from '../data/profileData';
 
 const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const experiences = [
-    {
-      title: 'Event Tech & Systems Leadership',
-      organization: 'College Sports Fest',
-      period: '2024 - Present',
-      icon: <FaTrophy />,
-      description: 'Leading development and management of event technology systems',
-      achievements: [
-        'Designed and developed Docathon Sports Event Management System',
-        'Implemented complex tournament logic (knockout, tri-series)',
-        'Created scoring and fixture management tools',
-        'Managed participant tracking for 100+ students',
-        'Designed black & gold branded UI/UX',
-        'Handled real-time event operations and data management'
-      ],
-      tags: ['Event Management', 'Full-Stack Development', 'UI/UX', 'Operations']
-    },
-    {
-      title: 'Project Development & Ownership',
-      organization: 'IIT Madras MAD Course',
-      period: '2024 - 2025',
-      icon: <FaCode />,
-      description: 'End-to-end ownership of course application projects',
-      achievements: [
-        'Built Vehicle Parking App with complete CRUD operations',
-        'Developed Hospital Management System V2 with async processing',
-        'Implemented Redis caching and Celery batch jobs',
-        'Created RESTful APIs with Flask',
-        'Built responsive frontends with VueJS and Bootstrap',
-        'Achieved project requirements with clean, maintainable code'
-      ],
-      tags: ['Flask', 'VueJS', 'Database Design', 'API Development']
-    },
-    {
-      title: 'Teaching & Mentoring',
-      organization: 'Peer Learning',
-      period: '2024 - Present',
-      icon: <FaChalkboardTeacher />,
-      description: 'Helping peers understand application development concepts',
-      achievements: [
-        'Conducted discussions on DBMS concepts and SQL',
-        'Explained Flask application architecture and patterns',
-        'Guided peers through debugging and problem-solving',
-        'Shared best practices for code organization',
-        'Assisted in understanding REST API design',
-        'Helped with project planning and implementation strategies'
-      ],
-      tags: ['Mentoring', 'DBMS', 'Flask', 'Problem Solving']
-    },
-    {
-      title: 'Operations & Event Coordination',
-      organization: 'College Events',
-      period: '2024 - Present',
-      icon: <FaUsers />,
-      description: 'Managing operations and coordination for college-level events',
-      achievements: [
-        'Coordinated sports fest logistics and scheduling',
-        'Managed team communications and updates',
-        'Ensured smooth execution of event workflows',
-        'Handled participant registrations and data',
-        'Coordinated with multiple teams for event success',
-        'Created documentation and operational guidelines'
-      ],
-      tags: ['Leadership', 'Coordination', 'Team Management', 'Operations']
-    }
-  ];
+  const timelineIcons = [<FaTrophy />, <FaCode />, <FaChalkboardTeacher />, <FaUsers />];
+
+  const experiences = profileData.experience.map((item, index) => ({
+    title: item.role,
+    organization: item.organization,
+    period: item.period,
+    icon: timelineIcons[index % timelineIcons.length],
+    description: item.points[0],
+    achievements: item.points,
+    tags: profileData.skills.businessAndStrategy.slice(0, 4),
+  }));
 
   return (
     <section id="experience" ref={ref} className="py-20 bg-gradient-to-b from-slate-gray to-midnight-navy relative overflow-hidden">
@@ -88,7 +34,7 @@ const Experience = () => {
           </h2>
           <div className="w-24 h-1 bg-royal-gold mx-auto mb-6"></div>
           <p className="text-warm-white/80 text-lg max-w-2xl mx-auto">
-            Building systems, leading teams, and creating impact through technology
+            Building systems, leading teams, and creating impact through analytics and execution
           </p>
         </motion.div>
 
@@ -163,6 +109,64 @@ const Experience = () => {
           ))}
         </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="mt-12"
+        >
+          <h3 className="text-3xl font-bold text-warm-white text-center mb-8">
+            Positions of <span className="text-royal-gold">Responsibility</span>
+          </h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {profileData.positions.map((position, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 1 + index * 0.1 }}
+                className="bg-slate-gray rounded-2xl border border-royal-gold/30 hover:border-royal-gold/60 transition-all duration-300 p-6"
+              >
+                <div className="text-2xl text-royal-gold mb-3">{timelineIcons[index % timelineIcons.length]}</div>
+                <h4 className="text-xl font-bold text-warm-white mb-1">{position.role}</h4>
+                <p className="text-royal-gold font-semibold mb-3">{position.organization}</p>
+                <ul className="space-y-2">
+                  {position.points.map((point, itemIndex) => (
+                    <li key={itemIndex} className="flex items-start gap-2 text-warm-white/80 text-sm">
+                      <span className="text-royal-gold mt-1">▸</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 1.1 }}
+          className="mt-12"
+        >
+          <h3 className="text-3xl font-bold text-warm-white text-center mb-8">
+            Achievements & <span className="text-royal-gold">Recognition</span>
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {profileData.achievements.map((achievement, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.4, delay: 1.2 + index * 0.08 }}
+                className="bg-slate-gray rounded-xl border border-royal-gold/20 hover:border-royal-gold/50 transition-all duration-300 p-5"
+              >
+                <p className="text-warm-white/85 text-sm leading-relaxed">{achievement}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Summary Stats */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -171,10 +175,10 @@ const Experience = () => {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { number: '3+', label: 'Major Projects', icon: '🚀' },
-            { number: '100+', label: 'Event Participants', icon: '👥' },
-            { number: '10+', label: 'Technologies Used', icon: '⚙️' },
-            { number: '2+', label: 'Years Learning', icon: '📚' }
+            { number: `${profileData.projects.length}+`, label: 'Major Projects', icon: '🚀' },
+            { number: '2500+', label: 'Event Participants', icon: '👥' },
+            { number: `${profileData.positions.length}+`, label: 'Leadership Roles', icon: '⚙️' },
+            { number: `${profileData.achievements.length}+`, label: 'Achievements', icon: '📚' }
           ].map((stat, index) => (
             <motion.div
               key={index}

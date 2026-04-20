@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaDownload } from 'react-icons/fa';
+import { profileData } from '../data/profileData';
 
 const Hero = () => {
+  const { basic, hero } = profileData;
+
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-midnight-navy">
       {/* Animated Background */}
@@ -48,10 +51,10 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
             >
               <h2 className="text-royal-gold text-base md:text-xl font-medium mb-2">
-                Hello, I'm
+                {hero.greeting}
               </h2>
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-warm-white mb-4">
-                Shiva Prakash
+                {basic.name}
               </h1>
               <div className="h-1 w-24 bg-royal-gold mb-6"></div>
             </motion.div>
@@ -62,7 +65,7 @@ const Hero = () => {
               transition={{ delay: 0.4 }}
               className="text-lg sm:text-xl md:text-2xl text-royal-gold font-semibold"
             >
-              Business Analyst in the making | Data Science + Applied Finance | Builder of apps & systems
+              {hero.tagline}
             </motion.p>
 
             <motion.p
@@ -71,7 +74,7 @@ const Hero = () => {
               transition={{ delay: 0.6 }}
               className="text-base sm:text-lg text-warm-white/80"
             >
-              I combine analytics, finance, and full-stack fundamentals to build meaningful projects in business and education.
+              {hero.summaryLine}
             </motion.p>
 
             <motion.div
@@ -134,7 +137,7 @@ const Hero = () => {
             >
               <img 
                 src="/profile.jpg" 
-                alt="Shiva Prakash" 
+                alt={basic.name}
                 className="w-full h-full object-cover"
               />
             </motion.div>
