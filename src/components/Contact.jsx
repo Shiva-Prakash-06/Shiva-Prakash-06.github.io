@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { FaEnvelope, FaLinkedin, FaGithub, FaPaperPlane } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaPaperPlane, FaPhone } from 'react-icons/fa';
 import { profileData } from '../data/profileData';
 
 const Contact = () => {
@@ -37,6 +37,13 @@ const Contact = () => {
   };
 
   const contactMethods = [
+    {
+      icon: <FaPhone />,
+      title: 'Phone',
+      value: profileData.basic.phone,
+      link: `tel:${profileData.basic.phone.replace(/\s/g, '')}`,
+      color: 'from-emerald-500 to-teal-500'
+    },
     {
       icon: <FaEnvelope />,
       title: 'Email',

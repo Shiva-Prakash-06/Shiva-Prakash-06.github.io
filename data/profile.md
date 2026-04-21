@@ -76,12 +76,18 @@ I enjoy combining analytical thinking with system design to create scalable, eff
 * Supporting data-driven decision-making for social initiatives
 * Involved in structuring datasets, analyzing trends, and generating insights
 * Exposure to real-world CSR workflows and stakeholder requirements
+* Thinkar Foundation is an NGO offering SaaS and tech solutions to other NGOs aiming to open source tech solutions for those in need of them.
+* The work I did required me to output reports, datasets and a portal.
 
 ### Business Development Intern - Suvidha Mahila Mandal
 
-* Conducted outreach to **150+ colleges**
+* Conducted outreach to **150+ colleges** to offer social internships
 * Executed cold calling and email campaigns
 * Supported expansion of NGO initiatives and partnerships
+
+### Volunteer Tour Guide - Indian Music Experience Museum
+
+* Led museum tours, communicated with diverse audiences, and explained music exhibits.
 
 ---
 
@@ -93,6 +99,8 @@ I enjoy combining analytical thinking with system design to create scalable, eff
 * Managed project allocation, review, and execution
 * Oversaw recruitment and project approvals
 * Delivered **5+ micro-projects and 1 flagship analytics event**
+* Led recruitment, project selection, and approval processes
+* Ensured alignment with academic and organizational goals
 
 ### Finance Head - Docathon
 
@@ -107,6 +115,8 @@ I enjoy combining analytical thinking with system design to create scalable, eff
 ---
 
 ## Projects
+
+### For currently working on projects - refer to Current Projects.md
 
 ### Docathon Sports Event System
 
@@ -150,6 +160,8 @@ I enjoy combining analytical thinking with system design to create scalable, eff
   * Cost structure
   * Financial projections
 * Conducted lean validation and market analysis
+* Identified market inefficiencies in artist-venue collaboration
+* Designed a solution with financial feasibility and operational model
 
 ---
 
@@ -164,10 +176,10 @@ I enjoy combining analytical thinking with system design to create scalable, eff
 ## Achievements
 
 * 2nd Place - Mitige '25 (Entrepreneurship, 15+ teams)
-* Top 5 - Cross Currents '25 (Marketing)
-* Top 5 - Shark Tank, Avyay '24
+* Top 5 - Cross Currents '25 (Marketing, 20+ teams)
+* Top 5 - Shark Tank, Avyay '24 (30+ teams)
 * Top 6 - Best Manager (250+ participants)
-* Top 16 - Finance Event
+* Top 16 - Finance Event (200+ participants)
 
 ---
 
@@ -222,6 +234,14 @@ I enjoy combining analytical thinking with system design to create scalable, eff
 * UI/UX
 * Reading
 * Tech for events
+
+---
+
+## Languages
+- English (Fluent)
+- Tamil (Native)
+- Kannada (Working)
+- Hindi (Working)
 
 ---
 

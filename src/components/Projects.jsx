@@ -64,6 +64,15 @@ const Projects = () => {
           </p>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-10 bg-royal-gold/10 border border-royal-gold/30 rounded-xl p-4 text-center"
+        >
+          <p className="text-warm-white/80 text-sm">{profileData.projectsReference}</p>
+        </motion.div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {projects.map((project, index) => (
             <motion.div
@@ -139,6 +148,37 @@ const Projects = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-14"
         >
+          <h3 className="text-2xl md:text-3xl font-bold text-warm-white text-center mb-4">
+            {profileData.currentProjectsSummary.title}
+          </h3>
+          <p className="text-warm-white/70 text-sm md:text-base text-center max-w-4xl mx-auto mb-8">
+            {profileData.currentProjectsSummary.description}
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+            {profileData.currentProjects.map((currentProject, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.85 + index * 0.1 }}
+                className="bg-slate-gray rounded-2xl border border-royal-gold/20 hover:border-royal-gold/50 transition-all duration-300 p-6"
+              >
+                <h4 className="text-xl font-bold text-warm-white mb-2">{currentProject.title}</h4>
+                <p className="text-royal-gold text-xs break-words mb-4">{currentProject.path}</p>
+                <p className="text-warm-white/80 text-sm leading-relaxed mb-4">{currentProject.outcome}</p>
+                <ul className="space-y-2">
+                  {currentProject.achievements.map((achievement, achievementIndex) => (
+                    <li key={achievementIndex} className="flex items-start gap-2 text-warm-white/80 text-sm">
+                      <span className="text-royal-gold mt-1">▸</span>
+                      <span>{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+
           <h3 className="text-2xl md:text-3xl font-bold text-warm-white text-center mb-8">
             Analytics & <span className="text-royal-gold">Research Work</span>
           </h3>

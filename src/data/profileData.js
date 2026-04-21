@@ -37,8 +37,7 @@ export const profileData = {
         'Corporate Finance',
         'Advanced Excel',
         'Machine Learning',
-        'Economics',
-        'Statistics',
+        'Economics, Statistics',
       ],
     },
     {
@@ -47,8 +46,7 @@ export const profileData = {
       degree: 'B.Sc - Data Science & Applications',
       cgpa: '8.2/10',
       coursework: [
-        'Python',
-        'SQL',
+        'Python, SQL',
         'Database Management Systems',
         'Statistics',
         'Application Development (Flask)',
@@ -66,6 +64,8 @@ export const profileData = {
         'Supporting data-driven decision-making for social initiatives',
         'Involved in structuring datasets, analyzing trends, and generating insights',
         'Exposure to real-world CSR workflows and stakeholder requirements',
+        'Thinkar Foundation is an NGO offering SaaS and tech solutions to other NGOs aiming to open source tech solutions for those in need of them.',
+        'The work I did required me to output reports, datasets and a portal.',
       ],
     },
     {
@@ -73,9 +73,17 @@ export const profileData = {
       organization: 'Suvidha Mahila Mandal',
       period: 'Internship',
       points: [
-        'Conducted outreach to 150+ colleges',
+        'Conducted outreach to 150+ colleges to offer social internships',
         'Executed cold calling and email campaigns',
         'Supported expansion of NGO initiatives and partnerships',
+      ],
+    },
+    {
+      role: 'Volunteer Tour Guide',
+      organization: 'Indian Music Experience Museum',
+      period: 'Volunteer',
+      points: [
+        'Led museum tours, communicated with diverse audiences, and explained music exhibits.',
       ],
     },
   ],
@@ -88,6 +96,8 @@ export const profileData = {
         'Managed project allocation, review, and execution',
         'Oversaw recruitment and project approvals',
         'Delivered 5+ micro-projects and 1 flagship analytics event',
+        'Led recruitment, project selection, and approval processes',
+        'Ensured alignment with academic and organizational goals',
       ],
     },
     {
@@ -107,6 +117,7 @@ export const profileData = {
       ],
     },
   ],
+  projectsReference: 'For currently working on projects - refer to Current Projects.md',
   projects: [
     {
       title: 'Docathon Sports Event System',
@@ -167,44 +178,89 @@ export const profileData = {
         'Designed a platform concept for musicians and venues with business and financial validation.',
       points: [
         'Designed a platform for musicians and venues',
-        'Built business model, cost structure, and financial projections',
+        'Built business model',
+        'Built cost structure',
+        'Built financial projections',
         'Conducted lean validation and market analysis',
+        'Identified market inefficiencies in artist-venue collaboration',
+        'Designed a solution with financial feasibility and operational model',
       ],
       tech: ['Business Modeling', 'Financial Analysis', 'Market Research'],
       context: 'Startup concept validation',
       image: '/project-4.png',
     },
   ],
+  currentProjectsSummary: {
+    title: 'Workspace Projects: Expected Outcomes summary',
+    description:
+      'This document details the expected outcomes and objectives for each of the three active projects in the current workspace. The focus is specifically on what each project is designed to achieve upon completion.',
+  },
+  currentProjects: [
+    {
+      title: 'LifeQuest',
+      path: '/Users/Shiva_1/Desktop/lifequest',
+      outcome:
+        'LifeQuest aims to transition from a youth-focused learning game into a professional-grade productivity and career-building platform for college and university students (ages 20-30). The primary outcome is an app that assists university students (e.g., The Ambitious Junior, The Pre-Med Freshman) in navigating their academic and career paths, preventing burnout, and organizing daily life.',
+      achievements: [
+        'Productivity Ecosystem: Provides comprehensive tools including pomodoro timers, an analytics dashboard, and targeted goal-tracking.',
+        'AI-Powered Task Suggestions: Replaces manual task creation with 5-10 daily AI-curated activities (e.g., work on internship applications, study for finals) to reduce decision fatigue and build lasting habits.',
+        'Granular Stats and Progress Tracking: Extends its gamification elements into a refined Stats System featuring 10 major career/lifestyle categories and over 40 granular metrics to monitor personal growth realistically over time.',
+        'Modern User Experience: Features a sleek, minimalist, data-driven UI aimed at young professionals, moving away from colorful and playful aesthetics to a serious, mature interface.',
+      ],
+    },
+    {
+      title: 'EquityLab',
+      path: '/Users/Shiva_1/Desktop/EquityLab',
+      outcome:
+        'EquityLab is designed to be a highly resilient, serverless financial and stock analysis platform. The main outcome is to provide users with a reliable tool to configure, weight, and execute complex stock analyses across Fundamental, Technical, and Industry metrics without platform instability.',
+      achievements: [
+        'Robust Analysis Engine: Features a reliable /run-analysis engine equipped to run on serverless/ephemeral environments (like Vercel). It handles edge cases, data sanitization (handling non-serializable elements like NumPy types), and uses Redis efficiently for background scaling and session management.',
+        'Accessible, Semantic UI/UX: The interface provides visually distinct interactive elements like Selection Cards and Metric Toggle Cards. The front-end outcome emphasizes progressive disclosure (showing detailed metric weight sliders only when necessary), ensuring a clutter-free experience.',
+        'Universal Accessibility: Completely WCAG AA compliant interface, integrating system-wide light/dark modes, full keyboard navigation, skeleton loaders for non-jarring state transitions, and Reduced Motion support for motion-sensitive users.',
+      ],
+    },
+    {
+      title: 'IPL Auction App',
+      path: '/Users/Shiva_1/Desktop/ipl-auction-app',
+      outcome:
+        'The IPL Auction App aims to deliver an immersive, real-time cricket game and auction simulator spanning multiple distinct modes (such as a generic GM Mode for fictional rosters and an IPL Mini-game for real rosters). The project outcome is an engaging strategy game that authenticates real-world constraints of managing a cricket team\'s budget and roster.',
+      achievements: [
+        'Mode Separation Constraints: Seamless, bug-free independence between different game modes (GM vs. IPL), meaning custom auction dashboards, routing hooks, and separate database seeds function flawlessly according to user choice.',
+        'Auction Phase Transparency: Engages players by making the auction progression obvious: providing clear indicators of whether an auction is in EARLY (Star Chasing), MID (Value Picks), or LATE (Budget Pressure) phases.',
+        'AI Intent Transparency: Enhances game immersion by translating underlying AI logic into plain English insights (e.g., blocking rivals from strengthening squad or raising price to pressure opponents) when bots make bids. This transforms random bot actions into intelligent behaviors that the user can analyze and react to in real time without altering the fairness of the simulation.',
+        'Real-Time Communication: Operates fully reactively by utilizing robust Socket.IO event listeners to maintain perfectly synchronized states with the backend across active web clients.',
+      ],
+    },
+  ],
   analytics: [
     {
       title: 'M&A Performance Analysis',
-      description: 'Evaluated post-merger performance outcomes.',
+      description: 'M&A Performance Analysis - evaluated post-merger performance',
     },
     {
       title: 'Indian Stock Indices Research',
-      description: 'Performed statistical trend analysis.',
+      description: 'Indian Stock Indices Research - statistical trend analysis',
     },
     {
       title: 'Regression Models and Dashboards',
-      description: 'Built models and dashboards using Excel, Tableau, and Power BI.',
+      description: 'Built regression models and dashboards using Excel, Tableau, Power BI',
     },
   ],
   achievements: [
-    '2nd Place - Mitige \u201925 (Entrepreneurship, 15+ teams)',
-    'Top 5 - Cross Currents \u201925 (Marketing)',
-    'Top 5 - Shark Tank, Avyay \u201924',
+    "2nd Place - Mitige '25 (Entrepreneurship, 15+ teams)",
+    "Top 5 - Cross Currents '25 (Marketing, 20+ teams)",
+    "Top 5 - Shark Tank, Avyay '24 (30+ teams)",
     'Top 6 - Best Manager (250+ participants)',
-    'Top 16 - Finance Event',
+    'Top 16 - Finance Event (200+ participants)',
   ],
   skills: {
     analyticsAndTools: [
       'Advanced Excel (financial modeling, dashboards)',
       'SQL (joins, querying)',
-      'Power BI',
-      'Tableau',
+      'Power BI, Tableau',
       'Python (data handling, backend logic)',
     ],
-    development: ['Flask', 'REST APIs', 'HTML/CSS', 'Bootstrap', 'SQLite'],
+    development: ['Flask, REST APIs', 'HTML/CSS, Bootstrap', 'SQLite'],
     businessAndStrategy: [
       'Financial Modeling',
       'Business Analysis',
@@ -232,6 +288,12 @@ export const profileData = {
     'UI/UX',
     'Reading',
     'Tech for events',
+  ],
+  languages: [
+    'English (Fluent)',
+    'Tamil (Native)',
+    'Kannada (Working)',
+    'Hindi (Working)',
   ],
   aspirations: {
     shortTerm: {

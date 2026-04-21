@@ -181,6 +181,31 @@ const Skills = () => {
           </div>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="mt-12 bg-slate-gray rounded-2xl border border-royal-gold/30 p-8"
+        >
+          <h3 className="text-2xl font-bold text-warm-white mb-6 text-center">
+            Languages <span className="text-royal-gold">Proficiency</span>
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {profileData.languages.map((language, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.3, delay: 1.05 + index * 0.05 }}
+                whileHover={{ scale: 1.1, y: -2 }}
+                className="px-4 py-2 bg-royal-gold/10 text-royal-gold rounded-full text-sm font-medium border border-royal-gold/30 hover:bg-royal-gold/20 hover:border-royal-gold/50 transition-all duration-300 cursor-default"
+              >
+                {language}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Learning Philosophy */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
